@@ -8,7 +8,7 @@ title: "01_function_scope"
 
 ---
 
-# Functions and Scope
+### JS Fundamentals, Functions, and Scope
 
 ---
 
