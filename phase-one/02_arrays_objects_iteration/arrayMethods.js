@@ -1,5 +1,17 @@
 // ✅ Array Iteration Methods
     // What are callback functions?
+    function callback() {
+        console.log('I am a callback function')
+    }
+
+    // takes in another function or returns a function
+    function higherOrderFunction(someFunction) {
+        someFunction()
+    }
+
+    higherOrderFunction(callback)
+
+
     const dogs = [
         {id: 1, name: 'Bailey', breed: 'Yorkie'},
         {id: 2, name: 'Daisy', breed: 'Golden Retriever'}, 
