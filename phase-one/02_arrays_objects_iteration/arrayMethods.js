@@ -1,5 +1,6 @@
 // ✅ Array Iteration Methods
     // What are callback functions?
+    // a function that is passed as an argument to another function and that function calls it
     function callback() {
         console.log('I am a callback function')
     }
@@ -12,16 +13,26 @@
     higherOrderFunction(callback)
 
 
-    const dogs = [
-        {id: 1, name: 'Bailey', breed: 'Yorkie'},
-        {id: 2, name: 'Daisy', breed: 'Golden Retriever'}, 
-        {id: 3, name: 'Apollo', breed: 'Golden Retriever'}
-    ]
     // .forEach()
-        
+    function getsCalledForEachElement(element) {
+        console.log(element)
+    }
+    // perform some action for each element in the array
+    // dogs.forEach(getsCalledForEachElement)
+    
+const dogs = [
+    {id: 1, name: 'Bailey', breed: 'Yorkie'},
+    {id: 2, name: 'Daisy', breed: 'Golden Retriever'}, 
+    {id: 3, name: 'Apollo', breed: 'Golden Retriever'}
+]
     // .map()
-
-
+const names = dogs.map((dog) => {
+    console.log(dog.name)
+    // console.log(dog['name'])
+    return dog.names
+})
+console.log(names)
+// console.log(dogs[1].name)
     // .filter()
         // Shallow copy
 
