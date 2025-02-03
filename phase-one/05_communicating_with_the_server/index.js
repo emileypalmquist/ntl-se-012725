@@ -1,7 +1,16 @@
 // ✅ Request-Response Cycle
 
     // request => url + http verb
+
+    // CRUD - CREATE READ UPDATE DELETE
+    // HTTP Verbs - GET, POST, PATCH, DELETE
+    // GET - READ or retrieve
+    // POST - CREATE
+    // PATCH / PUT - UPDATE
+    // DELETE - destroy, DELETE
+
     // response => status code + message body
+
     // async functions => allow us to "wait" before performing additional actions 
 
         // synchronized => happening at the same time
@@ -39,16 +48,16 @@
     // https://api.openbrewerydb.org/breweries
     // https://www.postman.com/
 
-// ✅ Handling Promises from .fetch()
+// ✅ Handling Promises from fetch()
 
-    // .fetch() => used for fetching resources asynchronously across a network
+    // fetch() => used for fetching resources asynchronously across a network
 
-    // fetch('https://api.openbrewerydb.org/breweries') // returns a promise
+    // fetch('https://api.openbrewerydb.org/bre') // returns a promise
     
-    // // once first Promise is resolved...
+    // // // once first Promise is resolved...
     // .then(resp => resp.json()) // ...convert the response into JSON and return another promise
     
-    // // once second Promise is resolved...
+    // // // once second Promise is resolved...
     // .then(breweries => {
 
     //     // ...console.log the JS response
@@ -119,7 +128,7 @@ console.log("------------------------");
         header.textContent = "No Breweries Found";
 
         div.append(icon, header);
-        container.appendChild(div);
+        brewList.appendChild(div);
     }
 
     // 1️⃣ Create a function (getAllBreweries) that:
@@ -131,7 +140,10 @@ console.log("------------------------");
         // 	✨ BONUS: Include error handling using .catch()
 
         function getAllBreweries(){
-            // ❗ your code here
+            fetch(BASE_URL)
+            .then((response) => response.json())
+            .then((breweries) => breweries.forEach(renderBrew))
+            // .then((breweries) => breweries.forEach((brewery) => renderBrew(brewery)))
         }
 
         // ✅ Check Answer: 
@@ -148,11 +160,20 @@ console.log("------------------------");
         // 	✨ BONUS: Include error handling using .catch()
 
         function getBreweriesByCity(city){
-            // ❗ your code here
+            fetch(`${BASE_URL}?by_city=${city}`)
+            .then((response) => response.json())
+            .then((breweries) => {
+                if (!!breweries.length) {
+                    breweries.forEach(renderBrew)
+                } else {
+                    returnNone()
+                }
+            })
+            .catch((error) => console.log(error))
         }
 
         // ✅ Check Answer: 
-        // document.addEventListener('DOMContentLoaded', getBreweriesByCity('miami'));
+        // document.addEventListener('DOMContentLoaded', getBreweriesByCity('pacines'));
 
     // 3️⃣  Create a function (getBreweriesByState) that:
 
@@ -192,8 +213,16 @@ console.log("------------------------");
         // 	✨ BONUS: Include error handling using .catch()
 
         function searchBreweries(e){
-            // ❗ your code here
+            e.preventDefault()
+
+            // remove all breweries from brewList
+            brewList.innerHTML = ''
+
+            const city = e.target['brew-input'].value
+            getBreweriesByCity(city)
+
+            e.target.reset()
         }
 
         // ✅ Check Answer: 
-        // brewForm.addEventListener('submit', searchBreweries);
+        brewForm.addEventListener('submit', searchBreweries);
