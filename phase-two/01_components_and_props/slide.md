@@ -1,15 +1,15 @@
 ---
 presentation:
   width: 1500
-  height: 1000
+  height: 1500
   controls: false
 ---
 
-<!-- slide -->
+---
 
-<h2> 🚗 React Roadmap
+## 🚗 React Roadmap
 
-The goals for Phase 2: </h2>
+The goals for Phase 2: 
 
 - Create a static frontend site with components and props (DOM Manipulation)
 
@@ -17,25 +17,23 @@ The goals for Phase 2: </h2>
 
 - Add side effects and data fetching to communicate with a server (Network Communication)
 
-<!-- slide -->
+---
 
-<h1> Components and Props </h1>
+## Components and Props 
 
-<!-- slide -->
+### ✅ Objectives 
 
-<h2> ✅ Objectives </h2>
+- ✳️ Discuss the benefits of React over Vanilla JS
+- ✳️ Explain the importance of Components
+- ✳️ Practice writing components
+- ✳️ Define props and how to create them
+- ✳️ Recognize destructured props and how to work with them
+- ✳️ Recognize best practices when writing components and props
+- ✳️ Render multiple components from a list
 
-✳️ Discuss the benefits of React over Vanilla JS
-✳️ Explain the importance of Components
-✳️ Practice writing components
-✳️ Define props and how to create them
-✳️ Recognize destructured props and how to work with them
-✳️ Recognize best practices when writing components and props
-✳️ Render multiple components from a list
+---
 
-<!-- slide -->
-
-<h2> 💡 React Philosophy </h2>
+## 💡 React Philosophy 
 
 - Use declarative syntax (JSX)
 - Makes it easier to work with the DOM
@@ -43,9 +41,9 @@ The goals for Phase 2: </h2>
 - Use components to break down complex UI into smaller pieces which creates a better separation of concerns
 - Easier to maintain
 
-<!-- slide -->
+---
 
-<h2> React > Vanilla JS </h2>
+## React > Vanilla JS 
 
 Instead of describing how to do something:
 
@@ -66,9 +64,9 @@ const h1 = (
 );
 ```
 
-<!-- slide -->
+---
 
-<h2> ⚙️ Components </h2>
+## ⚙️ Components 
 
 <p>
 
@@ -91,12 +89,11 @@ const Header = () => {
 ReactDOM.render(<Header />, document.getElementById("root"));
 ```
 
-<!-- slide -->
+---
 
-<h2> ⚙️ Component Gotchas </h2>
+### ⚙️ Component Gotchas 
 
 This is okay:
-
 ```js
 function Card() {
   return (
@@ -108,8 +105,9 @@ function Card() {
 }
 ```
 
-This is NOT okay:
+--
 
+This is NOT okay:
 ```js
 function card() {
   return (
@@ -119,14 +117,18 @@ function card() {
 }
 ```
 
+--
+
 - Component name needs to be capitalized
 - Components can only return one element
 
-<!-- slide -->
+---
 
-<h2> 🎩 Props! </h2>
+### 🎩 Props! 
 
 When you create components, one way to make them dynamic and reusable is by passing in props. For example, if we wanted to create several cards on our page using a Card component, we could do so like this:
+
+--
 
 ```js
 function Card(props) {
@@ -148,11 +150,13 @@ return (
 );
 ```
 
-<!-- slide -->
+---
 
-<h2> 🎩 Props Continued </h2>
+### 🎩 Props Continued 
 
 The props argument in our Card component defines an object that React will pass to our function when it is called, and it will use whatever attributes we add to our JSX component as key-value pairs on that props object.
+
+--
 
 For example, if we were to add a console.log in the Card component above, we'd end up seeing this object:
 
@@ -169,8 +173,8 @@ function Card(props) {
 }
 ```
 
-<!-- slide -->
+---
 
-<h2> Wireframes </h2>
+## Wireframes 
 
-<img src="https://res.cloudinary.com/dnocv6uwb/image/upload/v1643721399/wireframe_bfc35e.png">
+<img src="https://res.cloudinary.com/dnocv6uwb/image/upload/v1643721399/wireframe_bfc35e.png" height="500px" width="400px">
