@@ -1,11 +1,21 @@
+import { useState } from "react"
+
 function Header() {
+    const [ darkMode, setDarkMode ] = useState(true)
+   
+    const buttonText = darkMode ? "Light Mode" : "Dark Mode"
+
+    function handleToggleDarkModeClick() {
+        setDarkMode(!darkMode)
+    }
+
     return (
         <header>
-             <h1>
+            <h1>
                 <span className="logo">{"//"}</span>
                 Project Showcase
             </h1>
-            <button>Dark Mode</button>
+            <button onClick={handleToggleDarkModeClick} >{ buttonText }</button>
         </header>
     )
 }
