@@ -18,11 +18,26 @@ function ProjectForm({ onAddProject }) {
 
     function handleSubmit(event) {
         event.preventDefault()
-        // update projects state in ProjectsPage
-        onAddProject(formData)
+        // persist project
+        const requestConfig = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify(formData)
+        }
 
-        // reset form state
-        setFormData(initialState)
+        fetch('http://localhost:3001/projects', requestConfig)
+            .then((response) => response.json())
+            .then((newPlant) => {
+                // update projects state in ProjectsPage
+                onAddProject(newPlant)
+        
+                // reset form state
+                setFormData(initialState)
+            })
+            .catch(console.log)
     }
 
     return (

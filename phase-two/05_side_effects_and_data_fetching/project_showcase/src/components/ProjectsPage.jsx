@@ -1,22 +1,33 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import ProjectForm from "./ProjectForm"
 import ProjectContainer from "./ProjectContainer"
 
-import initialProjects from "../projects"
-
 function ProjectsPage() {
-    const [projects, setProjects] = useState(initialProjects)
+    const [projects, setProjects] = useState([])
+
+    useEffect(() => {
+        // fetch projects only when page first loads (After component mounts)
+        fetch('http://localhost:3001/projects')
+            .then((response) => response.json())
+            .then((allProjects) => setProjects(allProjects))
+    }, [])
 
     function onAddProject(newProject) {
-        console.log('need to update state', newProject)
         setProjects((currentProjects) => [...currentProjects, newProject])
+    }
+
+    function onUpdateAllProjects(newProjects) {
+        setProjects(newProjects)
     }
 
     return (
         <>
             <ProjectForm onAddProject={onAddProject} />
-            <ProjectContainer projects={projects} />
+            <ProjectContainer 
+                projects={projects} 
+                onUpdateAllProjects={onUpdateAllProjects}
+            />
         </>
     )
 }
