@@ -1,7 +1,7 @@
 import { useState } from "react"
+import { Outlet } from "react-router-dom"
 
 import Header from "./Header"
-import ProjectsPage from "./ProjectsPage"
 
 function App() {
   const [ darkMode, setDarkMode ] = useState(true)
@@ -15,7 +15,7 @@ function App() {
   return ( 
     <div className={ className }>
       <Header darkMode={darkMode} onDarkModeToggle={onDarkModeToggle} />
-      <ProjectsPage />
+      <Outlet />
     </div>
   );
 }

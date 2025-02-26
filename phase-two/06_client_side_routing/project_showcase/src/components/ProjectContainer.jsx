@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import { useOutletContext } from "react-router-dom"
 
 import ProjectFilters from "./ProjectFilters"
 import ProjectCard from "./ProjectCard"
 
-function ProjectContainer({ projects }) {
+function ProjectContainer() {
     const [ phaseFilter, setPhaseFilter ] = useState('all')
+    const { projects } = useOutletContext()
 
     function onPhaseFilterChange(phase) {
         setPhaseFilter(phase)

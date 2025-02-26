@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react"
-
-import ProjectForm from "./ProjectForm"
-import ProjectContainer from "./ProjectContainer"
+import { Outlet } from "react-router-dom"
 
 function ProjectsPage() {
     const [projects, setProjects] = useState([])
@@ -10,17 +8,22 @@ function ProjectsPage() {
         fetch('http://localhost:3001/projects')
             .then((response) => response.json())
             .then((allProjects) => setProjects(allProjects))
+            .catch(console.log)
     }, [])
 
     function onAddProject(newProject) {
         setProjects((currentProjects) => [...currentProjects, newProject])
     }
 
+    const context = {
+        projects,
+        onAddProject
+        // projects: projects,
+        // onAddProject: onAddProject
+    }
+
     return (
-        <>
-            <ProjectForm onAddProject={onAddProject} />
-            <ProjectContainer projects={projects} />
-        </>
+        <Outlet context={context} />
     )
 }
 
