@@ -5,3 +5,6 @@
 - [ ] many to many relationship
 - [ ] deleting associated data
 - [ ] Avoid recursion depth errors during serialization
+
+
+Post --> Comment <-- User
