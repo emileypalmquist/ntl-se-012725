@@ -2,6 +2,7 @@ from flask import Flask
 from sqlalchemy import MetaData
 from flask_sqlalchemy import SQLAlchemy 
 from flask_migrate import Migrate
+from flask_restful import Api
 
 app = Flask(__name__)
 
@@ -16,5 +17,7 @@ metadata = MetaData(naming_convention=naming_convention)
 db = SQLAlchemy(metadata=metadata)
 
 Migrate(app, db)
+
+api = Api(app)
 
 db.init_app(app)

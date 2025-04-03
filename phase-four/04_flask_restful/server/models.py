@@ -6,6 +6,8 @@ from config import db
 class Post(db.Model, SerializerMixin):
     __tablename__ = 'posts'
 
+    # serialize_only = ('id', 'title')
+    # serialize_rules = ('-comments.post', 'users_commented', '-users_commented.comments.post')
     serialize_rules = ('-comments.post',)
 
     id = db.Column(db.Integer, primary_key=True)
